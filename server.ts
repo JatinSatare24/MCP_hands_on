@@ -21,3 +21,32 @@ async function getWeatherByCity(city: string) {
   return { temp: null, error: 'Weather data not available for this city' };
 }
 
+// 🧠 Challenge:  
+// Create a tool called `getWeatherDataByCityName`  
+// It should take a city (New York or London) and return mock weather data as JSON text  
+// Use a helper like getWeatherByCity() to return the data  
+
+// Registering a tool on the MCP server
+server.tool(
+  // Tool name
+  'getWeatherDataByCityName',
+  // Tool description
+  'Get weather data for New York or London',
+  //  Define the input schema using Zod
+  {
+    city: z.string().describe('Name of the city to get weather for')
+  },
+  // Define the async function that will run when the tool is called
+  async ({ city }) => {
+    const weatherData = await getWeatherByCity(city);
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(weatherData)
+        }
+      ]
+    };
+  }
+);
+
