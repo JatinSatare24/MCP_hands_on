@@ -71,4 +71,19 @@ server.resource(
   },
 
   // 4. Read Callback: Receives the resolved URI object
- 
+  async (uri) => {
+    return {
+      contents: [
+        {
+          uri: uri.href, // Use the href property from the passed URI object
+          mimeType: "text/plain",
+          text: `Supported Cities:
+- London (UK)
+- New York (USA)`
+        }
+      ]
+    };
+  }
+);
+
+
