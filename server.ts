@@ -86,4 +86,11 @@ server.resource(
   }
 );
 
+// Inside the async function:
+// 1. Define the stdio transport by creating a `const transport` object with a new instance of `StdioServerTransport`.
+// 2. Connect the server using `await server.connect(transport)`.
+// 3. Print status messages to the terminal using `console.error()` to indicate the server is running.
 
+
+async function init() {
+ 
