@@ -50,3 +50,25 @@ server.tool(
   }
 );
 
+/**
+ * - Use URI: weather://cities
+ * - Return a plain text list of supported cities (e.g., London and New York)
+ * - Set content type to 'text/plain'
+ */
+
+// Registering a static resource on the MCP server
+server.resource(
+  // 1. Name: A unique string name for this resource registration
+  "weather-cities",
+
+  // 2. URI: The unique protocol identifier
+  "weather://cities",
+
+  // 3. Metadata Object
+  {
+    description: "List of supported cities",
+    mimeType: "text/plain"
+  },
+
+  // 4. Read Callback: Receives the resolved URI object
+ 
