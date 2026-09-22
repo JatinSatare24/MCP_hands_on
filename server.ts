@@ -93,4 +93,14 @@ server.resource(
 
 
 async function init() {
- 
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error('🌤️  Weather MCP Server Started!');
+  console.error('🛠️  Tool: getWeatherDataByCityName');
+  console.error('📚 Resource: weather://cities');
+  console.error('🏙️  Supported Cities: New York, London');
+  console.error('✅ Server ready!');
+
+}
+
+init().catch(console.error);
